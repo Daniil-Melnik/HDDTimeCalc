@@ -85,7 +85,7 @@ public class InputForm extends JFrame {
                     String result = String.format("Итог: %.6f", CalcUtils.getOperatingTime(numberValues, indexValues));
                     JOptionPane.showMessageDialog(InputForm.this, result);
                 } catch (NumberFormatException ex){
-                    System.out.println(ex.getMessage());
+                    JOptionPane.showMessageDialog(InputForm.this, "Поля заполнены некорректно");
                 }
             }
         });
