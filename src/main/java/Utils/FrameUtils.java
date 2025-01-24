@@ -1,6 +1,7 @@
 package Utils;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -28,19 +29,19 @@ public class FrameUtils {
                 break;
         }
 
-        panel.setPreferredSize(new Dimension(100, 25)); // Устанавливаем предпочитаемый размер панели
+        panel.setPreferredSize(new Dimension(100, 25));
         return panel;
     }
 
-    public static float [] getFloatArrFromFields(JTextField [] textFields){
-        float [] result = new float[SIZE];
-        for (int i = 0; i < SIZE; i++){
+    public static float [] getFloatArrFromFields(JTextField [] textFields) throws NumberFormatException {
+        float[] result = new float[SIZE];
+        for (int i = 0; i < SIZE; i++) {
             result[i] = Float.parseFloat(textFields[i].getText());
         }
         return result;
     }
 
-    public static int [] getIntArrFromFields(JTextField [] textFields){
+    public static int [] getIntArrFromFields(JTextField [] textFields) throws NumberFormatException{
         int [] result = new int[SIZE];
         for (int i = 0; i < SIZE; i++){
             result[i] = Integer.parseInt(textFields[i].getText());

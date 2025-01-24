@@ -79,11 +79,14 @@ public class InputForm extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int [] numberValues = FrameUtils.getIntArrFromFields(textFields1);
-                float [] indexValues = FrameUtils.getFloatArrFromFields(textFields0);
-
-                String result = String.format("Итог: %.6f", CalcUtils.getOperatingTime(numberValues, indexValues));
-                JOptionPane.showMessageDialog(InputForm.this, result);
+                try {
+                    int [] numberValues = FrameUtils.getIntArrFromFields(textFields1);
+                    float [] indexValues = FrameUtils.getFloatArrFromFields(textFields0);
+                    String result = String.format("Итог: %.6f", CalcUtils.getOperatingTime(numberValues, indexValues));
+                    JOptionPane.showMessageDialog(InputForm.this, result);
+                } catch (NumberFormatException ex){
+                    System.out.println(ex.getMessage());
+                }
             }
         });
         mainPanel.add(submitButton);
