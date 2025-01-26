@@ -1,5 +1,6 @@
 package frames;
 
+import Enums.TimeSets;
 import Utils.CalcUtils;
 import Utils.FrameUtils;
 
@@ -10,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.JComboBox;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -23,12 +25,14 @@ public class InputForm extends JFrame {
 
     private JPanel [] colorPanels;
 
+    private JComboBox<TimeSets> timeModeCombo;
+
     private final String [] rectangleColors = {"LIGHT_GRAY", "GRAY", "DARK_GRAY", "GREEN", "ORANGE"};
 
     public InputForm() {
         setTitle("Время диска");
         setBackground(Color.WHITE);
-        setSize(205, 200);
+        setSize(205, 240);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -56,6 +60,8 @@ public class InputForm extends JFrame {
             colorPanels[i] = FrameUtils.createColorRectangle(rectangleColors[i]);
         }
 
+        timeModeCombo = new JComboBox<>(TimeSets.values());
+
         int currentInputY = 20;
 
         for (int i = 0; i < 5; i++){
@@ -66,6 +72,9 @@ public class InputForm extends JFrame {
             currentInputY += 20;
         }
 
+        timeModeCombo.setBounds(55,125,125,25);
+        mainPanel.add(timeModeCombo);
+
         for (int i = 0; i < 5; i++){
             mainPanel.add(textFields0[i]);
             mainPanel.add(textFields1[i]);
@@ -73,9 +82,8 @@ public class InputForm extends JFrame {
             mainPanel.add(colorPanels[i]);
         }
 
-        // Создаем и добавляем кнопку
         JButton submitButton = new JButton("счёт");
-        submitButton.setBounds(55, 125, 80, 25);
+        submitButton.setBounds(55, 155, 80, 25);
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,6 +95,8 @@ public class InputForm extends JFrame {
                 } catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(InputForm.this, "Поля заполнены некорректно");
                 }
+                /*TimeSets ts = (TimeSets) timeModeCombo.getSelectedItem();
+                System.out.println(ts.name());*/
             }
         });
         mainPanel.add(submitButton);
