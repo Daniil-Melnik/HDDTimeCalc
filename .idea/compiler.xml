@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hddchecker" />
-        <module name="HDDTimeCalc" />
         <module name="untitled" />
       </profile>
     </annotationProcessing>
