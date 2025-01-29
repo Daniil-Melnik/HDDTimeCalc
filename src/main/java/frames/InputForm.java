@@ -4,14 +4,7 @@ import Enums.TimeSets;
 import Utils.CalcUtils;
 import Utils.FrameUtils;
 
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-import javax.swing.JComboBox;
+import javax.swing.*;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -23,20 +16,18 @@ public class InputForm extends JFrame {
     private JTextField [] textFields1;
     private JLabel [] labels;
     private JLabel [] modeLabels;
-
     private JPanel [] colorPanels;
-
     private JComboBox<TimeSets> timeModeCombo;
-
+    private JCheckBox modeCheckBox;
     private final String [] rectangleColors = {"LIGHT_GRAY", "GRAY", "DARK_GRAY", "GREEN", "ORANGE"};
-    private final String [] modeLabelsStr = {"Режим:", "Выбор:", "Свой:"};
+    private final String [] modeLabelsStr = {"Режим", "Выбор:", "Свой:"};
     private static final int MODE_NUM = 3;
     private static final int IMPUT_NUM = 5;
 
     public InputForm() {
         setTitle("Время диска");
         setBackground(Color.WHITE);
-        setSize(205, 240);
+        setSize(205, 260);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -58,8 +49,10 @@ public class InputForm extends JFrame {
         mainPanel.add(label00);
         mainPanel.add(label01);
 
+        modeCheckBox = new JCheckBox();
+
         for (int i = 0; i < MODE_NUM; i++){
-            modeLabels[i].setText(modeLabelsStr[i]);
+            modeLabels[i] = new JLabel(modeLabelsStr[i]);
         }
 
         for (int i = 0; i < IMPUT_NUM; i++){
@@ -81,18 +74,29 @@ public class InputForm extends JFrame {
             currentInputY += 20;
         }
 
-        timeModeCombo.setBounds(55,125,125,25);
-        mainPanel.add(timeModeCombo);
+        timeModeCombo.setBounds(55,145,125,25);
+        modeLabels[0].setBounds(75, 125, 50, 20);
+        modeLabels[1].setBounds(5, 145, 50, 20);
+        modeLabels[2].setBounds(5, 170, 50, 20);
+        modeCheckBox.setBounds(55, 171, 20, 20);
 
-        for (int i = 0; i < IMPUT_NUM; i++){
+
+        mainPanel.add(timeModeCombo);
+        mainPanel.add(modeCheckBox);
+
+        for (int i = 0; i < IMPUT_NUM; i++) {
             mainPanel.add(textFields0[i]);
             mainPanel.add(textFields1[i]);
             mainPanel.add(labels[i]);
             mainPanel.add(colorPanels[i]);
         }
 
+        for (int i = 0; i < MODE_NUM; i++){
+            mainPanel.add(modeLabels[i]);
+        }
+
         JButton submitButton = new JButton("счёт");
-        submitButton.setBounds(55, 155, 80, 25);
+        submitButton.setBounds(55, 195, 80, 25);
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
