@@ -22,12 +22,16 @@ public class InputForm extends JFrame {
     private JTextField [] textFields0;
     private JTextField [] textFields1;
     private JLabel [] labels;
+    private JLabel [] modeLabels;
 
     private JPanel [] colorPanels;
 
     private JComboBox<TimeSets> timeModeCombo;
 
     private final String [] rectangleColors = {"LIGHT_GRAY", "GRAY", "DARK_GRAY", "GREEN", "ORANGE"};
+    private final String [] modeLabelsStr = {"Режим:", "Выбор:", "Свой:"};
+    private static final int MODE_NUM = 3;
+    private static final int IMPUT_NUM = 5;
 
     public InputForm() {
         setTitle("Время диска");
@@ -36,10 +40,11 @@ public class InputForm extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        textFields0 = new JTextField[5];
-        textFields1 = new JTextField[5];
-        labels = new JLabel[5];
-        colorPanels = new JPanel[5];
+        textFields0 = new JTextField[IMPUT_NUM];
+        textFields1 = new JTextField[IMPUT_NUM];
+        labels = new JLabel[IMPUT_NUM];
+        colorPanels = new JPanel[IMPUT_NUM];
+        modeLabels = new JLabel[MODE_NUM];
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
@@ -53,7 +58,11 @@ public class InputForm extends JFrame {
         mainPanel.add(label00);
         mainPanel.add(label01);
 
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < MODE_NUM; i++){
+            modeLabels[i].setText(modeLabelsStr[i]);
+        }
+
+        for (int i = 0; i < IMPUT_NUM; i++){
             textFields0[i] = new JTextField(15);
             textFields1[i] = new JTextField(15);
             labels[i] = new JLabel(String.format("Метка %d:", i + 1));
@@ -64,7 +73,7 @@ public class InputForm extends JFrame {
 
         int currentInputY = 20;
 
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < IMPUT_NUM; i++){
             textFields0[i].setBounds(75, currentInputY, 50, 20);
             textFields1[i].setBounds(130, currentInputY, 50, 20);
             labels[i].setBounds(10, currentInputY, 50, 20);
@@ -75,7 +84,7 @@ public class InputForm extends JFrame {
         timeModeCombo.setBounds(55,125,125,25);
         mainPanel.add(timeModeCombo);
 
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < IMPUT_NUM; i++){
             mainPanel.add(textFields0[i]);
             mainPanel.add(textFields1[i]);
             mainPanel.add(labels[i]);
