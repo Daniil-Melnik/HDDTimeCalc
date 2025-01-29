@@ -1,5 +1,7 @@
 package frames.Components;
 
+import Utils.FrameUtils;
+
 import javax.swing.*;
 
 public class InputFieldSets extends JPanel {
@@ -7,15 +9,38 @@ public class InputFieldSets extends JPanel {
     private JTextField[] textFields0;
     private JTextField [] textFields1;
     private JLabel label01, label00;
-    private static final int IMPUT_NUM = 5;
+    private static final int INPUT_NUM = 5;
 
     public InputFieldSets(){
+        setSize(105, 120);
+        setLayout(null);
+
         label00 = new JLabel("Индекс");
         label01 = new JLabel("Кол-во");
 
-        label00.setBounds(78, 2, 50, 20);
-        label01.setBounds(135, 2, 50, 20);
+        label00.setBounds(0, 0, 50, 20);
+        label01.setBounds(60, 0, 50, 20);
 
+        add(label00);
+        add(label01);
 
+        textFields0 = new JTextField[INPUT_NUM];
+        textFields1 = new JTextField[INPUT_NUM];
+
+        for (int i = 0; i < INPUT_NUM; i++){
+            textFields0[i] = new JTextField(15);
+            textFields1[i] = new JTextField(15);
+        }
+        int currentInputY = 20;
+        for (int i = 0; i < INPUT_NUM; i++){
+            textFields0[i].setBounds(0, currentInputY, 50, 20);
+            textFields1[i].setBounds(55, currentInputY, 50, 20);
+            currentInputY += 20;
+        }
+
+        for (int i = 0; i < INPUT_NUM; i++) {
+            add(textFields0[i]);
+            add(textFields1[i]);
+        }
     }
 }
