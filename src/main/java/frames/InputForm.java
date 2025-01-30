@@ -85,12 +85,13 @@ public class InputForm extends JFrame {
 
         JButton submitButton = new JButton("счёт");
         submitButton.setBounds(55, 195, 80, 25);
-        /*submitButton.addActionListener(new ActionListener() {
+        submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    int [] numberValues = FrameUtils.getIntArrFromFields(textFields1);
-                    float [] indexValues = FrameUtils.getFloatArrFromFields(textFields0);
+                    JTextField [][] textFields = inputFieldsSet.getTextFields();
+                    int [] numberValues = FrameUtils.getIntArrFromFields(textFields[1]);
+                    float [] indexValues = FrameUtils.getFloatArrFromFields(textFields[0]);
                     String result = String.format("Итог: %.6f", CalcUtils.getOperatingTime(numberValues, indexValues));
                     JOptionPane.showMessageDialog(InputForm.this, result);
                 } catch (NumberFormatException ex){
@@ -100,7 +101,7 @@ public class InputForm extends JFrame {
                 // System.out.println(ts.name());
             }
         });
-        mainPanel.add(submitButton);*/
+        mainPanel.add(submitButton);
 
         add(mainPanel);
         setVisible(true);

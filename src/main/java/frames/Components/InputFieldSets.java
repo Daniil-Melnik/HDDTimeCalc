@@ -43,4 +43,8 @@ public class InputFieldSets extends JPanel {
             add(textFields1[i]);
         }
     }
+
+    public JTextField [][] getTextFields(){
+        return new JTextField[][]{textFields0, textFields1};
+    }
 }
