@@ -1,8 +1,8 @@
 package frames.Components;
 
-import Utils.FrameUtils;
-
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
 
 public class InputFieldSets extends JPanel {
 
@@ -12,8 +12,10 @@ public class InputFieldSets extends JPanel {
     private static final int INPUT_NUM = 5;
 
     public InputFieldSets(){
+
+        super(null);
         setSize(105, 120);
-        setLayout(null);
+        //setLayout(null);
 
         label00 = new JLabel("Индекс");
         label01 = new JLabel("Кол-во");

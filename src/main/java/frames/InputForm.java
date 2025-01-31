@@ -31,8 +31,7 @@ public class InputForm extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(null);
+        JPanel mainPanel = new JPanel(null);
 
         InputFieldSets inputFieldsSet = new InputFieldSets();
         inputFieldsSet.setBounds(75, 0, 105, 120);
