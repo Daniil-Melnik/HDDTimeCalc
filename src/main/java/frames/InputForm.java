@@ -4,6 +4,7 @@ import Enums.TimeSets;
 import Utils.CalcUtils;
 import Utils.FrameUtils;
 import frames.Components.InputFieldSets;
+import frames.Components.LabelsSet;
 
 import javax.swing.*;
 
@@ -13,8 +14,6 @@ import java.awt.event.ActionListener;
 
 public class InputForm extends JFrame {
 
-
-    private JLabel [] labels;
     private JLabel [] modeLabels;
     private JPanel [] colorPanels;
     private JComboBox<TimeSets> timeModeCombo;
@@ -37,8 +36,10 @@ public class InputForm extends JFrame {
         inputFieldsSet.setBounds(75, 0, 105, 120);
         mainPanel.add(inputFieldsSet);
 
+        LabelsSet labelsSet = new LabelsSet();
+        labelsSet.setBounds(10, 20, 50, 100);
+        mainPanel.add(labelsSet);
 
-        labels = new JLabel[IMPUT_NUM];
         colorPanels = new JPanel[IMPUT_NUM];
         modeLabels = new JLabel[MODE_NUM];
 
@@ -49,7 +50,6 @@ public class InputForm extends JFrame {
         }
 
         for (int i = 0; i < IMPUT_NUM; i++){
-            labels[i] = new JLabel(String.format("Метка %d:", i + 1));
             colorPanels[i] = FrameUtils.createColorRectangle(rectangleColors[i]);
         }
 
@@ -58,7 +58,6 @@ public class InputForm extends JFrame {
         int currentInputY = 20;
 
         for (int i = 0; i < IMPUT_NUM; i++){
-            labels[i].setBounds(10, currentInputY, 50, 20);
             colorPanels[i].setBounds(62, currentInputY + 1, 10, 18);
             currentInputY += 20;
         }
@@ -74,7 +73,6 @@ public class InputForm extends JFrame {
         mainPanel.add(modeCheckBox);
 
         for (int i = 0; i < IMPUT_NUM; i++) {
-            mainPanel.add(labels[i]);
             mainPanel.add(colorPanels[i]);
         }
 
