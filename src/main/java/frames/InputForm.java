@@ -3,10 +3,19 @@ package frames;
 import Enums.TimeSets;
 import Utils.CalcUtils;
 import Utils.FrameUtils;
+import frames.Components.ColorPanelSet;
 import frames.Components.InputFieldSets;
 import frames.Components.LabelsSet;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -15,10 +24,10 @@ import java.awt.event.ActionListener;
 public class InputForm extends JFrame {
 
     private JLabel [] modeLabels;
-    private JPanel [] colorPanels;
+
     private JComboBox<TimeSets> timeModeCombo;
     private JCheckBox modeCheckBox;
-    private final String [] rectangleColors = {"LIGHT_GRAY", "GRAY", "DARK_GRAY", "GREEN", "ORANGE"};
+
     private final String [] modeLabelsStr = {"Режим", "Выбор:", "Свой:"};
     private static final int MODE_NUM = 3;
     private static final int IMPUT_NUM = 5;
@@ -40,27 +49,18 @@ public class InputForm extends JFrame {
         labelsSet.setBounds(10, 20, 50, 100);
         mainPanel.add(labelsSet);
 
-        colorPanels = new JPanel[IMPUT_NUM];
-        modeLabels = new JLabel[MODE_NUM];
+        ColorPanelSet colorPanelSet = new ColorPanelSet();
+        colorPanelSet.setBounds(62, 20, 10, 100);
+        mainPanel.add(colorPanelSet);
 
+        modeLabels = new JLabel[MODE_NUM];
         modeCheckBox = new JCheckBox();
 
         for (int i = 0; i < MODE_NUM; i++){
             modeLabels[i] = new JLabel(modeLabelsStr[i]);
         }
 
-        for (int i = 0; i < IMPUT_NUM; i++){
-            colorPanels[i] = FrameUtils.createColorRectangle(rectangleColors[i]);
-        }
-
         timeModeCombo = new JComboBox<>(TimeSets.values());
-
-        int currentInputY = 20;
-
-        for (int i = 0; i < IMPUT_NUM; i++){
-            colorPanels[i].setBounds(62, currentInputY + 1, 10, 18);
-            currentInputY += 20;
-        }
 
         timeModeCombo.setBounds(55,145,125,25);
         modeLabels[0].setBounds(75, 125, 50, 20);
@@ -68,13 +68,8 @@ public class InputForm extends JFrame {
         modeLabels[2].setBounds(5, 170, 50, 20);
         modeCheckBox.setBounds(55, 171, 20, 20);
 
-
         mainPanel.add(timeModeCombo);
         mainPanel.add(modeCheckBox);
-
-        for (int i = 0; i < IMPUT_NUM; i++) {
-            mainPanel.add(colorPanels[i]);
-        }
 
         for (int i = 0; i < MODE_NUM; i++){
             mainPanel.add(modeLabels[i]);
