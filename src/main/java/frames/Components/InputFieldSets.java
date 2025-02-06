@@ -9,11 +9,13 @@ public class InputFieldSets extends JPanel {
     private JTextField[] textFields0;
     private JTextField [] textFields1;
     private JLabel label01, label00;
+    private TimeSets timeType;
     private static final int INPUT_NUM = 5;
 
     public InputFieldSets(){
 
         super(null);
+        timeType = null;
         setSize(105, 120);
         //setLayout(null);
 
@@ -49,4 +51,5 @@ public class InputFieldSets extends JPanel {
     public JTextField [][] getTextFields(){
         return new JTextField[][]{textFields0, textFields1};
     }
+    public void setTimeType(TimeSets newTimeType){ timeType = newTimeType;}
 }
