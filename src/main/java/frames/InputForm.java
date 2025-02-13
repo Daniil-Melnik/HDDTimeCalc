@@ -20,6 +20,7 @@ import javax.swing.SwingUtilities;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 
 public class InputForm extends JFrame {
 
@@ -74,6 +75,12 @@ public class InputForm extends JFrame {
         for (int i = 0; i < MODE_NUM; i++){
             mainPanel.add(modeLabels[i]);
         }
+
+        timeModeCombo.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                System.out.println(e.getItem());
+            }
+        });
 
         JButton submitButton = new JButton("счёт");
         submitButton.setBounds(55, 195, 80, 25);

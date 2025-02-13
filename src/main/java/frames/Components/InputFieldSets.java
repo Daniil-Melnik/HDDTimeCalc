@@ -18,7 +18,6 @@ public class InputFieldSets extends JPanel {
         super(null);
         timeType = null;
         setSize(105, 120);
-        //setLayout(null);
 
         label00 = new JLabel("Индекс");
         label01 = new JLabel("Кол-во");
@@ -52,5 +51,17 @@ public class InputFieldSets extends JPanel {
     public JTextField [][] getTextFields(){
         return new JTextField[][]{textFields0, textFields1};
     }
-    public void setTimeType(TimeSets newTimeType){ timeType = newTimeType;}
+
+    public void setTimeType(TimeSets newTimeType){
+        timeType = newTimeType;
+        updateIndexFields();
+    }
+
+    private void updateIndexFields(){
+        int [] newIndexes = timeType.getTimeScaleNum();
+        for (int i = 0; i < INPUT_NUM; i++){
+            textFields0[i].setText(Integer.toString(newIndexes[i]));
+        }
+        revalidate();
+    }
 }
