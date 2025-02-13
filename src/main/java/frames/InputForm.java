@@ -27,15 +27,14 @@ public class InputForm extends JFrame {
     private JLabel [] modeLabels;
 
     private JComboBox<TimeSets> timeModeCombo;
-    private JCheckBox modeCheckBox;
 
-    private final String [] modeLabelsStr = {"Режим", "Выбор:", "Свой:"};
-    private static final int MODE_NUM = 3;
+    private final String [] modeLabelsStr = {"Режим", "Выбор:"};
+    private static final int MODE_NUM = 2;
 
     public InputForm() {
         setTitle("Время диска");
         setBackground(Color.WHITE);
-        setSize(205, 260);
+        setSize(205, 240);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -54,7 +53,6 @@ public class InputForm extends JFrame {
         mainPanel.add(colorPanelSet);
 
         modeLabels = new JLabel[MODE_NUM];
-        modeCheckBox = new JCheckBox();
 
         for (int i = 0; i < MODE_NUM; i++){
             modeLabels[i] = new JLabel(modeLabelsStr[i]);
@@ -65,11 +63,8 @@ public class InputForm extends JFrame {
         timeModeCombo.setBounds(55,145,125,25);
         modeLabels[0].setBounds(75, 125, 50, 20);
         modeLabels[1].setBounds(5, 145, 50, 20);
-        modeLabels[2].setBounds(5, 170, 50, 20);
-        modeCheckBox.setBounds(55, 171, 20, 20);
 
         mainPanel.add(timeModeCombo);
-        mainPanel.add(modeCheckBox);
 
         for (int i = 0; i < MODE_NUM; i++){
             mainPanel.add(modeLabels[i]);
@@ -82,7 +77,7 @@ public class InputForm extends JFrame {
         });
 
         JButton submitButton = new JButton("счёт");
-        submitButton.setBounds(55, 195, 80, 25);
+        submitButton.setBounds(55, 175, 80, 25);
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -95,8 +90,6 @@ public class InputForm extends JFrame {
                 } catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(InputForm.this, "Поля заполнены некорректно");
                 }
-                // TimeSets ts = (TimeSets) timeModeCombo.getSelectedItem();
-                // System.out.println(ts.name());
             }
         });
         mainPanel.add(submitButton);
