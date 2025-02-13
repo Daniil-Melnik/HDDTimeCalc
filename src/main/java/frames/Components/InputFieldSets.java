@@ -3,13 +3,14 @@ package frames.Components;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import Enums.TimeSets;
 
 public class InputFieldSets extends JPanel {
 
     private JTextField[] textFields0;
     private JTextField [] textFields1;
-    private JLabel label01, label00;
     private TimeSets timeType;
+    private JLabel label00, label01;
     private static final int INPUT_NUM = 5;
 
     public InputFieldSets(){
