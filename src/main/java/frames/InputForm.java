@@ -78,7 +78,7 @@ public class InputForm extends JFrame {
 
         timeModeCombo.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                System.out.println(e.getItem());
+                inputFieldsSet.setTimeType(TimeSets.getObjectByStr(e.getItem().toString()));
             }
         });
 

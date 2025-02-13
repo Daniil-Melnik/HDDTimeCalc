@@ -25,4 +25,14 @@ public enum TimeSets {
     public String toString() {
         return timeScaleStr;
     }
+
+    public static TimeSets getObjectByStr(String str){
+        TimeSets result = null;
+        for (TimeSets tS : TimeSets.values()){
+            if (tS.getTimeScaleStr().equals(str)){
+                result = tS;
+            }
+        }
+        return  result;
+    }
 }
