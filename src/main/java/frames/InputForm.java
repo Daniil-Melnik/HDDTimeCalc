@@ -31,7 +31,6 @@ public class InputForm extends JFrame {
 
     private final String [] modeLabelsStr = {"Режим", "Выбор:", "Свой:"};
     private static final int MODE_NUM = 3;
-    private static final int IMPUT_NUM = 5;
 
     public InputForm() {
         setTitle("Время диска");
